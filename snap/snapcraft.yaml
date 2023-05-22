@@ -1,0 +1,21 @@
+name: golang-classic-example
+base: core20
+version: '0.1'
+summary: An example snap for a classic confinement golang project
+description: |
+  Shows how to create a snap for an application written in the Go language
+  that uses classic confinement.
+
+grade: devel
+confinement: classic
+
+apps:
+  golang-classic-example:
+    command: bin/main
+
+parts:
+  golang-classic-example:
+    build-snaps: [go]
+    build-packages: [pkg-config, libzstd-dev]
+    plugin: go
+    source: .
